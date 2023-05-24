@@ -1,0 +1,10 @@
+﻿<Window x:Class="Prism_Summary_Wpf0523.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <Button Command="{Binding MyCommnd}" x:Name="MyBtn" Content="测试0523" Height="133" Width="382"/>
+    </StackPanel>
+</Window>
