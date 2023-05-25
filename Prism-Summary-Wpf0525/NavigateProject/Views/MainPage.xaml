@@ -1,0 +1,21 @@
+﻿<Window x:Class="NavigateProject.Views.MainPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        Title="MainPage" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Command="{Binding MyCom}" CommandParameter="PageA" Content="PageA" Margin="10"/>
+            <Button Command="{Binding MyCom}" CommandParameter="PageB" Content="PageB" Margin="10"/>
+        </StackPanel>
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="MyRegion"  Margin="8"/>
+    </Grid>
+</Window>
