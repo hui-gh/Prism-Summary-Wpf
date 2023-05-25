@@ -15,7 +15,7 @@ namespace ModuleA
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<PageA>();
-            containerRegistry.RegisterForNavigation<PageB,PageBViewModel>();
+            containerRegistry.RegisterForNavigation<PageB>();
         }
     }
 }

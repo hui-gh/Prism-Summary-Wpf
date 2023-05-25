@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,27 @@ namespace ModuleA.ViewModels
     public class PageBViewModel : BindableBase, IConfirmNavigationRequest
     {
         private string? _title;
+        private IRegionNavigationService regionNavigationService;
+        public DelegateCommand GoBackCommand { get; set; }
+
         public string Title
         {
             get { return _title; }
             private set { _title = value; RaisePropertyChanged(); }
         }
+
+        public PageBViewModel() {
+            GoBackCommand = new DelegateCommand(GoBackFun);
+        }
+
+        private void GoBackFun()
+        {
+            if(regionNavigationService.Journal.CanGoBack)
+            {
+                regionNavigationService.Journal.GoBack();
+            }
+        }
+
         public void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
         {
             bool result = true;
@@ -38,11 +55,14 @@ namespace ModuleA.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
+            regionNavigationService = navigationContext.NavigationService;
             string s = navigationContext.Parameters["Name"] as string;
             if (s != null)
             {
                 Title = s;
             }
         }
+
+
     }
 }

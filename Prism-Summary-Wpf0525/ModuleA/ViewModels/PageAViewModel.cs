@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 
 namespace ModuleA.ViewModels
 {
-    public class PageAViewModel : BindableBase,INavigationAware
+    public class PageAViewModel : BindableBase,INavigationAware, IJournalAware
     {
         private string? _title;
         public string Title { 
@@ -42,6 +43,11 @@ namespace ModuleA.ViewModels
                 Title = t;
             }
              
+        }
+
+        public bool PersistInHistory()
+        {
+            return false;//禁止导航返回
         }
     }
 }
