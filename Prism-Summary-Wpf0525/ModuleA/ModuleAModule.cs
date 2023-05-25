@@ -1,3 +1,4 @@
+using ModuleA.ViewModels;
 using ModuleA.Views;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -14,7 +15,7 @@ namespace ModuleA
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<PageA>();
-            containerRegistry.RegisterForNavigation<PageB>();
+            containerRegistry.RegisterForNavigation<PageB,PageBViewModel>();
         }
     }
 }
