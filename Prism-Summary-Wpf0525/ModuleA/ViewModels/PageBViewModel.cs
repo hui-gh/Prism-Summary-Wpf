@@ -48,7 +48,10 @@ namespace ModuleA.ViewModels
         {
             return true;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="navigationContext"></param>
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
         }
