@@ -4,6 +4,6 @@
 	3）创建Views、ViewModels文件夹（文件夹必须同名）
 	4）创建视图：xxView，并在xxView.xaml中引用prism，设置自动扫描
 	5）创建视图对应Model：xxViewModel
-2. Delegate使用步骤：
+2. DelegateCommand使用步骤：
 	1）创建命令
 	2）在页面中绑定命令
