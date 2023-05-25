@@ -9,6 +9,8 @@
         Title="MainPage" Height="450" Width="800">
     <StackPanel>
         <TextBlock Text="{Binding Title}" FontSize="25"/>
-        <Button Command="{Binding OpenDialogCmd}" Margin="50" Width="140" Height="60" Content="{Binding BtnText}"/> 
+        <Button Command="{Binding OpenDialogCmd}" Margin="50" Width="140" Height="60" Content="{Binding BtnText}"/>
+        <Button Command="{Binding PubSubCmd}" Margin="50" Width="140" Height="60" Content="发布消息"/>
+        
     </StackPanel>
 </Window>

@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using DialogProject.Events;
+using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
@@ -19,13 +21,25 @@ namespace DialogProject.ViewModels
         public string BtnText { get { return btnText; } private set { btnText = value; RaisePropertyChanged(); } }
 
         public DelegateCommand OpenDialogCmd { get;private set; }
+        public DelegateCommand PubSubCmd { get;private set; }
 
         private IDialogService _dialogService;
+        private IEventAggregator _ea;
 
-        public MainPageViewModel(IDialogService dialogService)
+        public MainPageViewModel(IDialogService dialogService, IEventAggregator  ea)
         {
+            _ea = ea;
             _dialogService = dialogService;
             OpenDialogCmd = new DelegateCommand(OpenDialogFun);
+            PubSubCmd = new DelegateCommand(PubSubFun);
+        }
+
+        private void PubSubFun()
+        {
+            if(_ea != null)
+            {
+                _ea.GetEvent<MessageEvent>().Publish("我发布了消息");
+            }
         }
 
         private void OpenDialogFun()

@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using DialogProject.Events;
+using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
@@ -6,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Ink;
 
 namespace DialogProject.ViewModels
@@ -17,8 +20,15 @@ namespace DialogProject.ViewModels
 
         public DelegateCommand<string> CloseBtnCmd { get; private set; }
 
-        public NotificationDialogViewModel() {
+        public NotificationDialogViewModel(IEventAggregator eventAggregator) {
+            eventAggregator.GetEvent<MessageEvent>().Subscribe(eventFun);
             CloseBtnCmd = new DelegateCommand<string>(CloseDialogFun);
+            /*eventAggregator.GetEvent<MessageEvent>().Unsubscribe(eventFun);*/
+        }
+
+        private void eventFun(string obj)
+        {
+            MessageBox.Show($"接收到了: {obj}");
         }
 
         private void CloseDialogFun(string parameter)
